@@ -1,0 +1,41 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 app-home">
+
+        <a routerLink="/" class="navbar-brand">
+          <i class="material-icons">book</i>
+          <span>{{ appTitle }}</span>
+        </a>
+
+
+      </div>
+      <div class="col-md-6">
+        <nav class="navbar-header">
+          <ul class="nav navbar-nav">
+            <li>
+              <a routerLink="/">Authors</a>
+            </li>
+
+            <li>
+              <a routerLink="/events">Events</a>
+            </li>
+            <li class="search-bar">
+              <form class="form-inline md-form form-sm" (ngSubmit)="onSubmit()">
+                <input class="form-control form-control-sm ml-3 w-75" [ngClass]="{errorText: isSearchError}" type="text"
+                  placeholder="Search by title or author" aria-label="Search" [(ngModel)]="searchText" name="search">
+                <button type="submit">
+                  <i class="material-icons">search</i>
+                </button>
+              </form>
+              <p *ngIf="isSearchError" class="search-error">
+                Search Error, Please try again!
+              </p>
+            </li>
+          </ul>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

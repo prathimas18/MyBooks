@@ -1,0 +1,13 @@
+<div *ngIf="authorDetails">
+  <h1>{{authorTitle}}</h1>
+  <ul>
+    <li *ngFor="let author of authorDetails" class="row">
+      <img class="col-md-2" src="https://reststop.randomhouse.com/resources/titles/{{author.titles.isbn[0].$}}" />
+      <div class="col-md-10">
+        <h3>{{author.authordisplay}}</h3>
+        <p [innerHtml]="author.spotlight | splitText"></p>
+      </div>
+    </li>
+  </ul>
+
+</div>

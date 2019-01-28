@@ -1,0 +1,49 @@
+<h1>Registration Form</h1>
+
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="success" class="alert alert-success">
+    Congratulations {{ eventForm.controls.name.value }}. Registration is complete!
+  </div>
+
+  <div *ngIf="!success" class="form-group row">
+    <label for="name-field" class="col-md-12">
+      Name:
+      <input type="text" id="name-field" formControlName="name" class="form-control">
+      <div *ngIf="submitted && eventForm.controls.name.errors" class="errors">
+        <div *ngIf="submitted && eventForm.controls.name.errors.required" class="errors">
+          This field is required.
+        </div>
+        <div *ngIf="submitted && eventForm.controls.name.errors.pattern" class="errors">
+          Please enter a valid name, only alphabets and space are allowed.
+        </div>
+      </div>
+    </label>
+
+
+    <label for="email-field" class="col-md-12">
+      Email:
+      <input type="text" id="email-field" formControlName="email" class="form-control">
+      <div *ngIf="submitted && eventForm.controls.email.errors" class="errors">
+        <div *ngIf="submitted && eventForm.controls.email.errors.required" class="errors">
+          This field is required.
+        </div>
+        <div *ngIf="submitted && eventForm.controls.email.errors.email" class="errors">
+          Please enter a valid email.
+        </div>
+      </div>
+    </label>
+
+    <label class="col-md-12 add-member">
+      Additional Members:
+      <input type="number" formControlName="members" class="form-control">
+      <div *ngIf="submitted && eventForm.controls.members.errors" class="errors">
+        <div *ngIf="submitted && eventForm.controls.members.errors.pattern" class="errors">
+          Only upto 4 additional members are allowed.
+        </div>
+      </div>
+    </label>
+    <div class="col-md-12">
+      <input type="submit" class="btn btn-primary" value="Register" />
+    </div>
+  </div>
+</form>

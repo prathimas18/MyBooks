@@ -1,0 +1,27 @@
+<div *ngIf="errorStatus; then eventsection else errorsection"></div>
+<ng-template #eventsection>
+  <div class="event-list">
+    <h2>Upcoming Events</h2>
+    <div *ngIf="events">
+      <div *ngFor="let event of events" class="event-details row">
+        <div class="col-md-6">
+          <p class="subheader"> {{event.eventauthor}}</p>
+          <p> {{ event.eventdate | date:'fullDate' }} </p>
+        </div>
+        <div class="col-md-6">
+          <p class="subheader"> {{event.description}}</p>
+          <p> {{event.address1}}</p>
+          <p> {{event.city}}, {{event.state}}</p>
+        </div>
+        <div class="col-md-12">
+          <a routerLink="/register">Register Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #errorsection>
+  <div class="alert alert-danger" role="alert">
+    <p>{{errorMessage}}</p>
+  </div>
+</ng-template>

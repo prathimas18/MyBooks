@@ -1,0 +1,17 @@
+<p>
+
+</p>
+<div class="work-list row" *ngIf="works?.length > 0">
+  <h1 class="col-md-12">Featured Books</h1>
+  <div *ngFor="let work  of works" class="work-details col-md-4">
+    <span *ngIf="work.titles.isbn[0] !== undefined">
+      <img class="" src="https://reststop.randomhouse.com/resources/titles/{{work.titles.isbn[0].$}}" />
+    </span>
+    <span *ngIf="work.titles.isbn.$ !== undefined">
+      <img class="" src="https://reststop.randomhouse.com/resources/titles/{{work.titles.isbn.$}}" />
+    </span>
+
+    <p class="subheader"> {{work.titleweb}}</p>
+    <p [innerHtml]="work.authorweb | splitText | titlecase"> </p>
+  </div>
+</div>
